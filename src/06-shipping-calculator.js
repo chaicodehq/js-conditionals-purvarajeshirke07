@@ -30,4 +30,38 @@
  */
 export function calculateShipping(weight, country, orderTotal) {
   // Your code here
+  // any other country is international 
+
+  if(weight <= 0 || typeof country !== 'string' || orderTotal < 0){
+    return -1;
+  }
+  if (country == 'US') {
+    // for domestic shipping
+    if (orderTotal > 50) {
+      return 0;
+    } else if (weight <= 1) {
+      return 5;
+    } else if (weight <= 5) {
+      return 10;
+    } else {
+      return 15;
+    }
+  } else {
+    // for international shipping
+    if (orderTotal > 100) {
+      return 0;
+    } else if (weight <= 1) {
+      return 15;
+    } else if (weight <= 5) {
+      return 25;
+    } else {
+      return 40;
+    } 
+  }
+
+
+ 
+
 }
+
+console.log(calculateShipping(5,'IN',100))

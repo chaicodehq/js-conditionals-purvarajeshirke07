@@ -23,4 +23,23 @@
  */
 export function getTrafficAction(color) {
   // Your code here
+  var takeAction = '';
+  switch(color.toLowerCase()){
+    case 'green':
+      takeAction = 'GO';
+      break;
+    case 'yellow':
+      takeAction = 'SLOW DOWN';
+      break;
+    case 'red':
+      takeAction = 'STOP';
+      break;
+    case 'flashing red':
+      takeAction= 'STOP AND PROCEED WITH CAUTION';
+      break;
+    default:
+      takeAction= 'INVALID SIGNAL'
+  }
+  return takeAction;
 }
+console.log(getTrafficAction('hello'));

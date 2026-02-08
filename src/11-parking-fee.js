@@ -34,4 +34,50 @@
  */
 export function calculateParkingFee(hours, vehicleType) {
   // Your code here
+  var extraChargeCar= 3;
+  var extraChargeMotorcycle = 2;
+  var extraChargeBus = 7;
+  var countFees= 0
+  var hoursRounded = Math.ceil(hours);
+  
+  console.log(hoursRounded)
+  if (hoursRounded <= 0) {
+    return -1;
+  }
+
+  switch(vehicleType.toLowerCase()){
+    case "car":
+        countFees = (hoursRounded == 1) ? 5 : 5 + (hoursRounded - 1) * extraChargeCar;
+        if (countFees > 30) {
+        countFees = 30;
+      }
+      break;
+
+
+    case "motorcycle":
+        countFees = (hoursRounded == 1) ? 3 : 3 + (hoursRounded - 1) * extraChargeMotorcycle;
+        if (countFees > 18) {
+        countFees = 18;
+      }
+      break;
+
+
+    case "bus":
+      countFees = (hoursRounded == 1) ? 10 : 10 + (hoursRounded - 1) * extraChargeBus;
+      if (countFees > 60) {
+        countFees = 60;
+      }
+      break;
+
+    default :
+        countFees= -1;
+        break;
+
+  }
+  return countFees;
+
+
 }
+
+
+console.log(calculateParkingFee(12,"Motorcycle"));
